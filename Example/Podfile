@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'DRAuraButton_Example' do
+  pod 'DRAuraButton', :path => '../'
+
+  target 'DRAuraButton_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
