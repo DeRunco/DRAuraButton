@@ -7,7 +7,9 @@
 //
 
 @import UIKit;
+@import DRAuraButton;
 
 @interface DRViewController : UIViewController
+@property (nonatomic, weak) IBOutlet DRAuraButton *button;
 
 @end
