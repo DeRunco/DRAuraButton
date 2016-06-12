@@ -1,5 +1,7 @@
 #import "DRAuraCircle.h"
 
+static CGFloat animationTime = 0.25;
+
 NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, CGFloat space)
 {
 	CGFloat radius = (frame.size.width - width)/2. + space;
@@ -91,6 +93,8 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	
 	_topLayer.fillColor = [UIColor clearColor].CGColor;
 	_bottomLayer.fillColor = [UIColor clearColor].CGColor;
+	
+	self.superview.layer.backgroundColor = _config.color.CGColor;
 }
 
 - (void)changeConfiguration:(DRAuraConfiguration*)tmpConfig;
@@ -112,30 +116,37 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	NSArray<UIBezierPath *>* smallpaths = smallPath(self.bounds, _tmpConfig.width, _tmpConfig.offset, _tmpConfig.space);
 	
 	CABasicAnimation *morphTop = [CABasicAnimation animationWithKeyPath:@"path"];
-	morphTop.duration = .3;
+	morphTop.duration = animationTime;
 	morphTop.toValue = (__bridge id _Nullable)(smallpaths[0].CGPath);
 	morphTop.fromValue = (__bridge id _Nullable)(_topLayer.path);
 	
 	CABasicAnimation *morphBottom = [CABasicAnimation animationWithKeyPath:@"path"];
-	morphBottom.duration = .3;
+	morphBottom.duration = animationTime;
 	morphBottom.toValue = (__bridge id _Nullable)smallpaths[1].CGPath;
 	morphBottom.fromValue = (__bridge id _Nullable)(_bottomLayer.path);
 	
 	CABasicAnimation *colorTop = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
-	colorTop.duration = .3;
+	colorTop.duration = animationTime;
 	colorTop.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
 	colorTop.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
 	
 	CABasicAnimation *colorBottom = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
-	colorBottom.duration = .3;
+	colorBottom.duration = animationTime;
 	colorBottom.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
 	colorBottom.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
 
+	CABasicAnimation *colorSuperview = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+	colorSuperview.duration = animationTime;
+	colorSuperview.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
+	colorSuperview.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
+	
 	[_topLayer addAnimation:morphTop forKey:nil];
 	[_bottomLayer addAnimation:morphBottom forKey:nil];
 	
 	[_topLayer addAnimation:colorTop forKey:nil];
 	[_bottomLayer addAnimation:colorBottom forKey:nil];
+	
+	[self.superview.layer addAnimation:colorSuperview forKey:nil];
 	
 	[CATransaction setDisableActions:YES];
 	
