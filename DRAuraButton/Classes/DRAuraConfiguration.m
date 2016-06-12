@@ -6,7 +6,7 @@
 	self = [super init];
 	self.width = 1.;
 	self.space = -1.;
-	self.offset = 0.05;
+	self.offset = 5;
 	self.step = 0.01;
 	self.color = [UIColor blackColor];
 	return self;

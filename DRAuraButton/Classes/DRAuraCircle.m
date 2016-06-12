@@ -2,14 +2,17 @@
 
 NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, CGFloat space)
 {
+	CGFloat radius = (frame.size.width - width)/2. + space;
+	CGFloat angleOffset = offset / radius;
+	
 	UIBezierPath *pathBottom = [UIBezierPath bezierPathWithArcCenter:CGPointMake(frame.size.width/2., frame.size.height/2.)
-															  radius:(frame.size.width - width)/2. + space startAngle:offset
-															endAngle:M_PI-offset
+															  radius:radius startAngle:angleOffset
+															endAngle:M_PI-angleOffset
 														   clockwise:YES];
 	
 	UIBezierPath *pathTop = [UIBezierPath bezierPathWithArcCenter:CGPointMake(frame.size.width/2., frame.size.height/2.)
-														   radius:(frame.size.width - width)/2. + space startAngle:-offset
-														 endAngle:-M_PI+offset
+														   radius:radius startAngle:-angleOffset
+														 endAngle:-M_PI+angleOffset
 														clockwise:NO];
 	
 	return @[pathTop, pathBottom];
@@ -71,8 +74,8 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	if (![NSThread isMainThread]) {
 		NSLog(@"%s must be called from the main thread.", __FUNCTION__);
 	}
-	CGFloat offset = M_PI*_config.offset;
-	NSArray<UIBezierPath *>* paths = smallPath(self.bounds, _config.width, offset, _config.space);
+	
+	NSArray<UIBezierPath *>* paths = smallPath(self.bounds, _config.width, _config.offset, _config.space);
 	
 	_topLayer.path = paths[0].CGPath;
 	_bottomLayer.path = paths[1].CGPath;
@@ -106,7 +109,7 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 		return;
 	}
 	
-	NSArray<UIBezierPath *>* smallpaths = smallPath(self.bounds, _tmpConfig.width, M_PI*_tmpConfig.offset/2., _tmpConfig.space);
+	NSArray<UIBezierPath *>* smallpaths = smallPath(self.bounds, _tmpConfig.width, _tmpConfig.offset, _tmpConfig.space);
 	
 	CABasicAnimation *morphTop = [CABasicAnimation animationWithKeyPath:@"path"];
 	morphTop.duration = .3;
