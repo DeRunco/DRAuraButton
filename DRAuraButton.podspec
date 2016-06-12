@@ -32,7 +32,7 @@ The main objective of that pod was to work with the Core Animation framework.
   s.author           = { 'Charles Thierry' => 'charles.thierry@gmail.com' }
   s.source           = { :git => 'https://github.com/DeRunco/DRAuraButton.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '7.1'
 
   s.source_files = 'DRAuraButton/Classes/**/*'
 
