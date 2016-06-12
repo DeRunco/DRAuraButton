@@ -14,9 +14,9 @@
  */
 @property (nonatomic)CGFloat width;
 /**
- *  The space between the button and the circle. 0 brings a circle with a stroke of 0 pixel exactly inside the the sqare occupied by the button (or a (width, width) square).
+ *  The space between the button and the circle. Setting it to 0 brings a circle with a stroke of 0 pixel exactly inside the the sqare occupied by the button (or a (width, width) square).
  
- Defaults at -1.0
+ Defaults at 1.0. Greater is farther.
  */
 @property (nonatomic)CGFloat space;
 /**

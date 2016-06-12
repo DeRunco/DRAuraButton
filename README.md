@@ -32,9 +32,9 @@ Any storyboard button can be set to be a `DRAuraButton`.
 
 The button presents arbitrary states, defined by the developer.
 
-A state is defined by a set of properties, stored in a `DRAuraConfiguration` object. Among those properties are the `ID` object. It serves as state identifier (for example in the  `DRAuraButton.currentState`). All states must have a different `ID`.
+A state is defined by a set of properties, stored in a `DRAuraConfiguration` object. Among those properties are the `ID` object. It serves as state identifier (for example in the  `DRAuraButton.currentStateID`). All states must have a unique `ID`.
 
-To create and add a new state, use the DRAuraButton `addAuraConfigurations:` method: 
+To create and add a new state, use `DRAuraButton` `addAuraConfigurations:` method: 
 
 ```ObjC
 [myButton addAuraConfigurations:^(DRAuraConfiguration *c) {
@@ -46,13 +46,13 @@ To create and add a new state, use the DRAuraButton `addAuraConfigurations:` met
 	c.color = auraColor;
 }];
 ```
-To switch to that state, call `setCurrentState:` :
+To switch to that state, call `setCurrentStateID:` :
 
 ```ObjC
-[myButton setCurrentState:@"my State name"];
+[myButton setCurrentStateID:@"my State name"];
 ```
 
-The speed of rotation is customizable (`DRAuraConfiguration.step`, greater is faster), as well as the distance between the button and the circle (`DRAuraConfiguration.space` greater is closer), the stroke width (`DRAuraConfiguration.width` greater is wider) and the space between the top half and the bottom half (`DRAuraConfiguration.offset` greater is wider).
+The speed of rotation is customizable (`DRAuraConfiguration.step`, greater is faster), as well as the distance between the button and the circle (`DRAuraConfiguration.space` greater is farther), the stroke width (`DRAuraConfiguration.width` greater is wider) and the space between the top half and the bottom half (`DRAuraConfiguration.offset` greater is wider).
 
 This project was done mainly to test the Core Animation framework -- it uses `CABasicAnimation`s to animates transition between states of the circle.
 

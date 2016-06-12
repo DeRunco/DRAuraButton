@@ -58,8 +58,8 @@ NSString *stateForStep(NSInteger step)
 - (void)configureTheButton
 {
 	CGFloat auraWidth = 1.;
-	CGFloat auraSpace = -1.;
-	CGFloat auraSpacePlaying = -10;
+	CGFloat auraSpace = 1.;
+	CGFloat auraSpacePlaying = 10.;
 	CGFloat auraOffset = 0.06;
 	
 	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {

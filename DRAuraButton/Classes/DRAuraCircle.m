@@ -3,12 +3,12 @@
 NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, CGFloat space)
 {
 	UIBezierPath *pathBottom = [UIBezierPath bezierPathWithArcCenter:CGPointMake(frame.size.width/2., frame.size.height/2.)
-															  radius:(frame.size.width - width)/2. - space startAngle:offset
+															  radius:(frame.size.width - width)/2. + space startAngle:offset
 															endAngle:M_PI-offset
 														   clockwise:YES];
 	
 	UIBezierPath *pathTop = [UIBezierPath bezierPathWithArcCenter:CGPointMake(frame.size.width/2., frame.size.height/2.)
-														   radius:(frame.size.width - width)/2. - space startAngle:-offset
+														   radius:(frame.size.width - width)/2. + space startAngle:-offset
 														 endAngle:-M_PI+offset
 														clockwise:NO];
 	
