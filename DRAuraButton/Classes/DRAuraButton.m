@@ -144,7 +144,7 @@
 		NSLog(@"%s No configuration with ID: %@", __FUNCTION__, ID);
 		return;
 	}
-	[_auraConfigurations removeObjectForKey:toRemove];
+	[_auraConfigurations removeObjectForKey:ID];
 }
 
 @end
