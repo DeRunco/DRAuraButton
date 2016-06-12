@@ -14,7 +14,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Installation
 
 DRAuraButton is available through a non official [CocoaPods](http://cocoapods.org) repository. To install
-it, simply add the following line to your Podfile:
+it, simply add the following lines to your Podfile:
 
 ```ruby
 source 'https://github.com/DeRunco/cocoapods/'
