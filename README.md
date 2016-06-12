@@ -13,19 +13,20 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-DRAuraButton is available through [CocoaPods](http://cocoapods.org). To install
+DRAuraButton is available through a non official [CocoaPods](http://cocoapods.org) repository. To install
 it, simply add the following line to your Podfile:
 
 ```ruby
+source 'https://github.com/DeRunco/cocoapods/'
 pod "DRAuraButton"
 ```
 
 ## About
-![animateed transition from a configuration to another](./output.gif "Animated Transitions!")
+![Animated transition from a configuration to another](./output.gif "Animated Transitions!")
 
-DRAuraButton is a UIButton with a subview, that displays a rotating circle. Multiple configuration of stroke width, radius, stroke color can be specified. Going from one configuration to another is transitionned.
+DRAuraButton is a UIButton with a subview that displays a rotating circle. Multiple configuration of stroke width, radius, color and speed can be specified. Going from one configuration to another is transitionned.
 
-I made this project as a starter for the Core Animation framework.
+This project was done mainly as a first approch to Core Animation framework -- it uses `CABasicAnimation`s to animates transition between states.
 
 #### Instantiate
 
@@ -35,18 +36,20 @@ Any storyboard button can be set to be a `DRAuraButton`.
 
 The button presents arbitrary states, defined by the developer.
 
-A state is defined by a set of properties, stored in a `DRAuraConfiguration` object. Among those properties are the `ID` object. It serves as state identifier (for example in the  `DRAuraButton.currentStateID`). All states must have a unique `ID`.
+A state is defined by a set of properties, stored in a `DRAuraConfiguration` object. Among those properties are the `ID`. It serves as state identifier (see `DRAuraButton.currentStateID`). All states must have a unique `ID`.
 
-To create and add a new state, use `DRAuraButton` `addAuraConfigurations:` method: 
+To create and add a new state, use `DRAuraButton` `addAuraConfiguration:` method: 
 
 ```ObjC
-[myButton addAuraConfigurations:^(DRAuraConfiguration *c) {
+[myButton addAuraConfiguration:^(DRAuraConfiguration *c) {
 	c.ID = @"my State name";
-	c.width = auraWidth;
-	c.space = auraSpace;
-	c.offset = auraOffset;
-	c.step = auraStep;
-	c.color = auraColor;
+	c.width = 2.;
+	c.space = 7.;
+	c.offset = 6.;
+	c.step = 0.04;
+	c.animationDuration = 0.3;
+	c.auraColor = [UIColor blackColor];
+	c.buttonColor = [UIColor grayColor];
 }];
 ```
 To switch to that state, call `setCurrentStateID:` :
@@ -54,10 +57,21 @@ To switch to that state, call `setCurrentStateID:` :
 ```ObjC
 [myButton setCurrentStateID:@"my State name"];
 ```
+To remove a state from the object, call `removeAuraConfiguration:` :
 
-The speed of rotation is customizable (`DRAuraConfiguration.step`, greater is faster), as well as the distance between the button and the circle (`DRAuraConfiguration.space` greater is farther), the stroke width (`DRAuraConfiguration.width` greater is wider) and the space between the top half and the bottom half (`DRAuraConfiguration.offset` greater is wider).
+```ObjC
+[myButton removeAuraConfiguration:@"my State name"];
+```
 
-This project was done mainly to test the Core Animation framework -- it uses `CABasicAnimation`s to animates transition between states of the circle.
+#### Customizable properties
+
+* Angle of rotation per frame: set `DRAuraConfiguration.step`. Greater is faster. Rotation is animated by NSTimer each 0.016s. As per NSTimer however, this time interval is not guaranteed.
+* Space between the button and the circle: set `DRAuraConfiguration.space`. Greater is bigger
+* Space between the top half and the bottom half: set `DRAuraConfiguration.offset`. This value is half the actual arc length between each arc.  
+* Stroke width: set `DRAuraConfiguration.width`. Greater is wider.
+* Color of the stroke: set `DRAuraConfiguration.auraColor`.
+* Color of the button's background layer: set `DRAuraConfiguration.buttonColor`.
+
 
 ## License
 
