@@ -19,7 +19,7 @@
  *
  *  @param ID The ID of the configuration to remove.
  */
-- (void)removeAuraConfiguration:(NSObject *)ID;
+- (void)removeAuraConfiguration:(NSString *)ID;
 
 /**
  *  A readonly list of the configurations.
@@ -29,6 +29,6 @@
 /**
  *  Return the ID of the currently used configuration.
  */
-@property (nonatomic) NSObject *currentStateID;
+@property (nonatomic) NSString *currentStateID;
 
 @end

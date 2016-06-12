@@ -66,7 +66,7 @@
 	});
 }
 
-- (void)setCurrentStateID:(NSObject *)cS
+- (void)setCurrentStateID:(NSString *)cS
 {
 	
 	dispatch_async(dispatch_get_main_queue(), ^{
