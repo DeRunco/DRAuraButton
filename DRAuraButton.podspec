@@ -18,25 +18,20 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+An UIButton that adds a rotating subview. This subview displays two arc of a circle that can be customized. Customisation can be pre-registered and transitionned between.
+
+The main objective of that pod was to work with the Core Animation framework.
                        DESC
 
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/DRAuraButton'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/DeRunco/DRAuraButton'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Charles Thierry' => 'charles.thierry@gmail.com' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/DRAuraButton.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/DeRunco/DRAuraButton.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'DRAuraButton/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'DRAuraButton' => ['DRAuraButton/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.public_header_files = 'Pod/Classes/**/*.h'
+
 end
