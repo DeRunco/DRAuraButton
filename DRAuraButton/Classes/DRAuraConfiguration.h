@@ -8,7 +8,7 @@
 /**
  *  The ID is used by the user to switch between configurations
  */
-@property (nonatomic)id<NSCopying> ID;
+@property (nonatomic)NSObject * ID;
 /**
  *  The width of the stroke of the circle. Defaults at 1.0
  */
