@@ -1,7 +1,5 @@
 #import "DRAuraCircle.h"
 
-static CGFloat animationTime = 0.25;
-
 NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, CGFloat space)
 {
 	CGFloat radius = (frame.size.width - width)/2. + space;
@@ -116,27 +114,27 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	NSArray<UIBezierPath *>* smallpaths = smallPath(self.bounds, _tmpConfig.width, _tmpConfig.offset, _tmpConfig.space);
 	
 	CABasicAnimation *morphTop = [CABasicAnimation animationWithKeyPath:@"path"];
-	morphTop.duration = animationTime;
+	morphTop.duration = _tmpConfig.animationDuration;
 	morphTop.toValue = (__bridge id _Nullable)(smallpaths[0].CGPath);
 	morphTop.fromValue = (__bridge id _Nullable)(_topLayer.path);
 	
 	CABasicAnimation *morphBottom = [CABasicAnimation animationWithKeyPath:@"path"];
-	morphBottom.duration = animationTime;
+	morphBottom.duration = _tmpConfig.animationDuration;
 	morphBottom.toValue = (__bridge id _Nullable)smallpaths[1].CGPath;
 	morphBottom.fromValue = (__bridge id _Nullable)(_bottomLayer.path);
 	
 	CABasicAnimation *colorTop = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
-	colorTop.duration = animationTime;
+	colorTop.duration = _tmpConfig.animationDuration;
 	colorTop.toValue = (__bridge id _Nullable)(_tmpConfig.auraColor.CGColor);
 	colorTop.fromValue = (__bridge id _Nullable)(_config.auraColor.CGColor);
 	
 	CABasicAnimation *colorBottom = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
-	colorBottom.duration = animationTime;
+	colorBottom.duration = _tmpConfig.animationDuration;
 	colorBottom.toValue = (__bridge id _Nullable)(_tmpConfig.auraColor.CGColor);
 	colorBottom.fromValue = (__bridge id _Nullable)(_config.auraColor.CGColor);
 
 	CABasicAnimation *colorSuperview = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-	colorSuperview.duration = animationTime;
+	colorSuperview.duration = _tmpConfig.animationDuration;
 	colorSuperview.toValue = (__bridge id _Nullable)(_tmpConfig.buttonColor.CGColor);
 	colorSuperview.fromValue = (__bridge id _Nullable)(_config.buttonColor.CGColor);
 	

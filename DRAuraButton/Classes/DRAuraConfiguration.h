@@ -40,4 +40,10 @@
  */
 @property (nonatomic)CGFloat step;
 
+/**
+ *  Indicate the time the transition to that configuration should take.
+ Defaults to 0.25
+ */
+@property (nonatomic)CGFloat animationDuration;
+
 @end

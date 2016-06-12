@@ -10,6 +10,7 @@
 	self.step = 0.01;
 	self.auraColor = [UIColor blackColor];
 	self.buttonColor = [UIColor clearColor];
+	self.animationDuration = 0.25;
 	return self;
 }
 
