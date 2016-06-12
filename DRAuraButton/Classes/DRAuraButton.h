@@ -24,7 +24,7 @@
 /**
  *  A readonly list of the configurations.
  */
-@property (nonatomic, readonly) NSDictionary <NSObject *, DRAuraConfiguration *> *auraConfigurations;
+@property (nonatomic, readonly) NSDictionary <id<NSCopying>, DRAuraConfiguration *> *auraConfigurations;
 
 /**
  *  Return the ID of the currently used configuration.

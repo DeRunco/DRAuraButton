@@ -6,7 +6,7 @@
 
 @property (nonatomic) BOOL rotating;
 @property (nonatomic) DRAuraCircle *aura;
-@property (nonatomic) NSMutableDictionary <NSObject *, DRAuraConfiguration *> *auraConfigurations;
+@property (nonatomic) NSMutableDictionary <id<NSCopying>, DRAuraConfiguration *> *auraConfigurations;
 
 @property (nonatomic) NSTimer *rotationTimer;
 //TODO: get the angle from the aura transform to remove _rotationAngle?
