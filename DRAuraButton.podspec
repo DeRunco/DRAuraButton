@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DRAuraButton'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'A UIButton with a rotating subview.'
 
 # This description is used to generate tags and improve search results.
@@ -18,11 +18,11 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-An UIButton with a rotating subview. This subview displays two arc of a circle that can be customized. Customisation can be pre-registered and transitionned between.
+An UIButton with a rotating subview. This subview displays two arc of a circle that can be customized. Customisation are pre-registered and their transition are animated.
 
 Customization includes the color and width of the arcs, the distance between the arcs and the distance between the circle and the button itself.
 
-The UIButton itself appears as a circle (by setting the UIButton.layer.cornerRadius).
+The UIButton itself appears as a disk (by setting the UIButton.layer.cornerRadius).
 
 The main objective of that pod was to work with the Core Animation framework.
                        DESC

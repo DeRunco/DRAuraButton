@@ -8,14 +8,15 @@
 	self.space = -1.;
 	self.offset = 5;
 	self.step = 0.01;
-	self.color = [UIColor blackColor];
+	self.auraColor = [UIColor blackColor];
+	self.buttonColor = [UIColor clearColor];
 	return self;
 }
 
 - (NSString *)debugDescription
 {
-	return [NSString stringWithFormat:@"<%@ %p> width %0.2f, space %0.2f, offset %0.2f, speed %0.2f, color %@",
-			[self class], self, self.width, self.space, self.offset, self.step, self.color];
+	return [NSString stringWithFormat:@"<%@ %p> width %0.2f, space %0.2f, offset %0.2f, speed %0.2f, aura color %@, button color %@",
+			[self class], self, self.width, self.space, self.offset, self.step, self.auraColor, self.buttonColor];
 }
 
 @end

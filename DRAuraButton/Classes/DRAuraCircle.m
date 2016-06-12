@@ -88,13 +88,13 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	_topLayer.lineCap = @"round";
 	_bottomLayer.lineCap = @"round";
 	
-	_topLayer.strokeColor = _config.color.CGColor;
-	_bottomLayer.strokeColor = _config.color.CGColor;
+	_topLayer.strokeColor = _config.auraColor.CGColor;
+	_bottomLayer.strokeColor = _config.auraColor.CGColor;
 	
 	_topLayer.fillColor = [UIColor clearColor].CGColor;
 	_bottomLayer.fillColor = [UIColor clearColor].CGColor;
 	
-	self.superview.layer.backgroundColor = _config.color.CGColor;
+	self.superview.layer.backgroundColor = _config.buttonColor.CGColor;
 }
 
 - (void)changeConfiguration:(DRAuraConfiguration*)tmpConfig;
@@ -127,18 +127,18 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	
 	CABasicAnimation *colorTop = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
 	colorTop.duration = animationTime;
-	colorTop.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
-	colorTop.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
+	colorTop.toValue = (__bridge id _Nullable)(_tmpConfig.auraColor.CGColor);
+	colorTop.fromValue = (__bridge id _Nullable)(_config.auraColor.CGColor);
 	
 	CABasicAnimation *colorBottom = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
 	colorBottom.duration = animationTime;
-	colorBottom.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
-	colorBottom.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
+	colorBottom.toValue = (__bridge id _Nullable)(_tmpConfig.auraColor.CGColor);
+	colorBottom.fromValue = (__bridge id _Nullable)(_config.auraColor.CGColor);
 
 	CABasicAnimation *colorSuperview = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
 	colorSuperview.duration = animationTime;
-	colorSuperview.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
-	colorSuperview.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
+	colorSuperview.toValue = (__bridge id _Nullable)(_tmpConfig.buttonColor.CGColor);
+	colorSuperview.fromValue = (__bridge id _Nullable)(_config.buttonColor.CGColor);
 	
 	[_topLayer addAnimation:morphTop forKey:nil];
 	[_bottomLayer addAnimation:morphBottom forKey:nil];
