@@ -133,7 +133,7 @@
 	if (!_auraConfigurations) {
 		_auraConfigurations = [[NSMutableDictionary alloc] init];
 	}
-	[_auraConfigurations setObject:conf forKey:conf.ID];
+	[_auraConfigurations setObject:conf forKey:(NSString *)conf.ID];
 }
 
 - (void)removeAuraConfiguration:(NSString *)ID;
