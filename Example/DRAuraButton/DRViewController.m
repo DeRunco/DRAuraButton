@@ -14,7 +14,7 @@
 
 NSString *stateForStep(NSInteger step)
 {
-	return @[@"idle", @"loading", @"playing", @"stopping"][step];
+	return @[@"idle", @"loading"][step];
 }
 
 @implementation DRViewController
@@ -42,12 +42,6 @@ NSString *stateForStep(NSInteger step)
 				self.currentStep = 1;
 				break;
 			case 1:
-				self.currentStep = 2;
-				break;
-			case 2:
-				self.currentStep = 3;
-				break;
-			case 3:
 				self.currentStep = 0;
 				break;
 		}
@@ -57,42 +51,22 @@ NSString *stateForStep(NSInteger step)
 
 - (void)configureTheButton
 {
-	CGFloat auraWidth = 6.;
-	CGFloat auraSpace = 0.;
-	CGFloat auraSpacePlaying = 5.;
-	CGFloat auraOffset = 6;
 	DRAuraButton *button = self.button;
 	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(0);
-		c.width = auraWidth;
-		c.space = auraSpace;
-		c.offset = auraOffset;
-		c.step = 0.;
+		c.width = 2.;
+		c.space = 4.;
+		c.offset = 6.;
+		c.step = 0.04;
 		c.color = [UIColor blackColor];
 	}];
 	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(1);
-		c.width = auraWidth;
-		c.space = auraSpace;
-		c.offset = auraOffset;
-		c.step = 0.01;
+		c.width = 6.;
+		c.space = 8.5;
+		c.offset = 15.;
+		c.step = 0.15;
 		c.color = [UIColor redColor];
-	}];
-	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
-		c.ID = stateForStep(2);
-		c.width = auraWidth;
-		c.space = auraSpacePlaying;
-		c.offset = auraOffset;
-		c.step = 0.02;
-		c.color = [UIColor greenColor];
-	}];
-	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
-		c.ID = stateForStep(3);
-		c.width = auraWidth;
-		c.space = auraSpace;
-		c.offset = auraOffset;
-		c.step = 0.01;
-		c.color = [UIColor orangeColor];
 	}];
 	[button setCurrentStateID:stateForStep(0)];
 }
