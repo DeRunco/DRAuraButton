@@ -57,10 +57,10 @@ NSString *stateForStep(NSInteger step)
 
 - (void)configureTheButton
 {
-	CGFloat auraWidth = 1.;
-	CGFloat auraSpace = 1.;
-	CGFloat auraSpacePlaying = 10.;
-	CGFloat auraOffset = 0.06;
+	CGFloat auraWidth = 6.;
+	CGFloat auraSpace = 0.;
+	CGFloat auraSpacePlaying = 5.;
+	CGFloat auraOffset = 6;
 	
 	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(0);
@@ -76,7 +76,7 @@ NSString *stateForStep(NSInteger step)
 		c.space = auraSpace;
 		c.offset = auraOffset;
 		c.step = 0.01;
-		c.color = [UIColor yellowColor];
+		c.color = [UIColor redColor];
 	}];
 	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(2);
