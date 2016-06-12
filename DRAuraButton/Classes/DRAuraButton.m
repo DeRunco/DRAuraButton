@@ -6,7 +6,7 @@
 
 @property (nonatomic) BOOL rotating;
 @property (nonatomic) DRAuraCircle *aura;
-@property (nonatomic) NSDictionary <NSObject *, DRAuraConfiguration *> *auraConfigurations;
+@property (nonatomic) NSMutableDictionary <NSObject *, DRAuraConfiguration *> *auraConfigurations;
 
 @property (nonatomic) NSTimer *rotationTimer;
 //TODO: get the angle from the aura transform to remove _rotationAngle?
@@ -66,14 +66,15 @@
 	});
 }
 
-- (void)setCurrentState:(NSObject *)cS
+- (void)setCurrentStateID:(NSObject *)cS
 {
-	_currentState = cS;
+	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		DRAuraConfiguration *cf = _auraConfigurations[cS];
 		[self startRotation];
 		[self.aura changeConfiguration:cf];
 		[self.aura commitConfiguration];
+		_currentStateID= cS;
 	});
 }
 
@@ -106,7 +107,7 @@
 
 - (void)rotateAura:(NSTimer *)timer
 {
-	DRAuraConfiguration *cf = _auraConfigurations[_currentState];
+	DRAuraConfiguration *cf = _auraConfigurations[_currentStateID];
 	if (cf.step != 0.0) {
 		_aura.transform = CGAffineTransformMakeRotation(_rotationAngle);
 		_rotationAngle += cf.step;
@@ -121,16 +122,29 @@
 
 //MARK: Aura external configuration override
 
-- (void)addAuraConfigurations:(void(^)(DRAuraConfiguration* c))block
+- (void)addAuraConfiguration:(void(^)(DRAuraConfiguration* c))block
 {
 	DRAuraConfiguration *conf = [[DRAuraConfiguration alloc] init];
 	block(conf);
-	if (!self.auraConfigurations) {
-		self.auraConfigurations = [[NSDictionary alloc] init];
+	if (conf.ID == nil) {
+		NSLog(@"%s this configuration is lacking a valid ID -- it was not added.", __FUNCTION__);
+		return;
 	}
-	NSMutableDictionary *dic = [self.auraConfigurations mutableCopy];
-	[dic setObject:conf forKey:conf.ID];
-	self.auraConfigurations = dic;
+	if (!_auraConfigurations) {
+		_auraConfigurations = [[NSMutableDictionary alloc] init];
+	}
+	[_auraConfigurations setObject:conf forKey:conf.ID];
+}
+
+- (void)removeAuraConfiguration:(NSString *)ID;
+{
+	DRAuraConfiguration *toRemove;
+	toRemove = self.auraConfigurations[ID];
+	if (!toRemove) {
+		NSLog(@"%s No configuration with ID: %@", __FUNCTION__, ID);
+		return;
+	}
+	[_auraConfigurations removeObjectForKey:toRemove];
 }
 
 @end

@@ -51,7 +51,7 @@ NSString *stateForStep(NSInteger step)
 				_currentStep = 0;
 				break;
 		}
-		[_button setCurrentState:stateForStep(_currentStep)];
+		[_button setCurrentStateID:stateForStep(_currentStep)];
 	});
 }
 
@@ -62,7 +62,7 @@ NSString *stateForStep(NSInteger step)
 	CGFloat auraSpacePlaying = -10;
 	CGFloat auraOffset = 0.06;
 	
-	[_button addAuraConfigurations:^(DRAuraConfiguration *c) {
+	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(0);
 		c.width = auraWidth;
 		c.space = auraSpace;
@@ -70,7 +70,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.;
 		c.color = [UIColor blackColor];
 	}];
-	[_button addAuraConfigurations:^(DRAuraConfiguration *c) {
+	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(1);
 		c.width = auraWidth;
 		c.space = auraSpace;
@@ -78,7 +78,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.01;
 		c.color = [UIColor yellowColor];
 	}];
-	[_button addAuraConfigurations:^(DRAuraConfiguration *c) {
+	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(2);
 		c.width = auraWidth;
 		c.space = auraSpacePlaying;
@@ -86,7 +86,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.02;
 		c.color = [UIColor greenColor];
 	}];
-	[_button addAuraConfigurations:^(DRAuraConfiguration *c) {
+	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(3);
 		c.width = auraWidth;
 		c.space = auraSpace;
@@ -94,7 +94,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.01;
 		c.color = [UIColor orangeColor];
 	}];
-	[_button setCurrentState:stateForStep(0)];
+	[_button setCurrentStateID:stateForStep(0)];
 }
 
 @end

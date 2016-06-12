@@ -8,7 +8,6 @@
 	self.space = -1.;
 	self.offset = 0.05;
 	self.step = 0.01;
-	self.rotation = YES;
 	self.color = [UIColor blackColor];
 	return self;
 }

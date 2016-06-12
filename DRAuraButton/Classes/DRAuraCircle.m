@@ -122,16 +122,17 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	colorTop.duration = .3;
 	colorTop.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
 	colorTop.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
+	
 	CABasicAnimation *colorBottom = [CABasicAnimation animationWithKeyPath:@"strokeColor"];
 	colorBottom.duration = .3;
 	colorBottom.toValue = (__bridge id _Nullable)(_tmpConfig.color.CGColor);
 	colorBottom.fromValue = (__bridge id _Nullable)(_config.color.CGColor);
 
-	[_topLayer addAnimation:morphTop forKey:@""];
-	[_bottomLayer addAnimation:morphBottom forKey:@""];
+	[_topLayer addAnimation:morphTop forKey:nil];
+	[_bottomLayer addAnimation:morphBottom forKey:nil];
 	
-	[_topLayer addAnimation:colorTop forKey:@""];
-	[_bottomLayer addAnimation:colorBottom forKey:@""];
+	[_topLayer addAnimation:colorTop forKey:nil];
+	[_bottomLayer addAnimation:colorBottom forKey:nil];
 	
 	[CATransaction setDisableActions:YES];
 	
