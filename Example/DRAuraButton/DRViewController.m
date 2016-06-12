@@ -37,21 +37,21 @@ NSString *stateForStep(NSInteger step)
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L), ^{
 
-		switch (_currentStep) {
+		switch (self.currentStep) {
 			case 0:
-				_currentStep = 1;
+				self.currentStep = 1;
 				break;
 			case 1:
-				_currentStep = 2;
+				self.currentStep = 2;
 				break;
 			case 2:
-				_currentStep = 3;
+				self.currentStep = 3;
 				break;
 			case 3:
-				_currentStep = 0;
+				self.currentStep = 0;
 				break;
 		}
-		[_button setCurrentStateID:stateForStep(_currentStep)];
+		[self.button setCurrentStateID:stateForStep(self.currentStep)];
 	});
 }
 
@@ -61,8 +61,8 @@ NSString *stateForStep(NSInteger step)
 	CGFloat auraSpace = 0.;
 	CGFloat auraSpacePlaying = 5.;
 	CGFloat auraOffset = 6;
-	
-	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
+	DRAuraButton *button = self.button;
+	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(0);
 		c.width = auraWidth;
 		c.space = auraSpace;
@@ -70,7 +70,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.;
 		c.color = [UIColor blackColor];
 	}];
-	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
+	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(1);
 		c.width = auraWidth;
 		c.space = auraSpace;
@@ -78,7 +78,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.01;
 		c.color = [UIColor redColor];
 	}];
-	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
+	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(2);
 		c.width = auraWidth;
 		c.space = auraSpacePlaying;
@@ -86,7 +86,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.02;
 		c.color = [UIColor greenColor];
 	}];
-	[_button addAuraConfiguration:^(DRAuraConfiguration *c) {
+	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(3);
 		c.width = auraWidth;
 		c.space = auraSpace;
@@ -94,7 +94,7 @@ NSString *stateForStep(NSInteger step)
 		c.step = 0.01;
 		c.color = [UIColor orangeColor];
 	}];
-	[_button setCurrentStateID:stateForStep(0)];
+	[button setCurrentStateID:stateForStep(0)];
 }
 
 @end
