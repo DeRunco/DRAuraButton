@@ -8,7 +8,7 @@
 /**
  *  The ID is used by the user to switch between configurations
  */
-@property (nonatomic)NSObject * ID;
+@property (nonatomic, copy)id<NSCopying> ID;
 /**
  *  The width of the stroke of the circle. Defaults at 1.0
  */
@@ -28,7 +28,7 @@
  *  The color of the circle stroke
  Defaults at black.
  */
-@property (nonatomic)UIColor *color;
+@property (nonatomic, copy)UIColor *color;
 /**
  *  The rotation is done by NSTimer scheduled on the main thread, with a timeinterval of 0.025 (around 60fps). The step is the angle of progression during that time. It is in radian. If 0, no rotation happens.
  Defaults at 0.01

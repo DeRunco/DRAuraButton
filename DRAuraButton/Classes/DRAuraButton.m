@@ -136,7 +136,7 @@
 	[_auraConfigurations setObject:conf forKey:conf.ID];
 }
 
-- (void)removeAuraConfiguration:(NSObject *)ID;
+- (void)removeAuraConfiguration:(id<NSCopying>)ID;
 {
 	DRAuraConfiguration *toRemove;
 	toRemove = self.auraConfigurations[ID];
