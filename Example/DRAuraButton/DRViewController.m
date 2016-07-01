@@ -89,7 +89,9 @@ NSString *stateForStep(NSInteger step)
 
 - (void)initTimer
 {
-	_pulseTimer = [NSTimer scheduledTimerWithTimeInterval:5.1 target:self selector:@selector(changeMode:) userInfo:nil repeats:YES];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		_pulseTimer = [NSTimer scheduledTimerWithTimeInterval:5.1 target:self selector:@selector(changeMode:) userInfo:nil repeats:YES];
+	});
 }
 
 - (void)changeMode:(NSTimer *)t
