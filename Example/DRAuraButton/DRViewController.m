@@ -58,17 +58,17 @@ NSString *stateForStep(NSInteger step)
 		c.space = 7.;
 		c.offset = 6.;
 		c.step = 0.04;
-		c.animationDuration = 0.3;
+		c.animationDuration = 0.0;
 		c.auraColor = [UIColor blackColor];
 		c.buttonColor = [UIColor grayColor];
 	}];
 	[button addAuraConfiguration:^(DRAuraConfiguration *c) {
 		c.ID = stateForStep(1);
-		c.width = 6.;
-		c.space = 9.5;
+		c.width = 25.;
+		c.space = 30.5;
 		c.offset = 6.;
 		c.step = 0.15;
-		c.animationDuration = 0.3;
+		c.animationDuration = 2.5;
 		c.auraColor = [UIColor redColor];
 		c.buttonColor = [UIColor orangeColor];
 	}];

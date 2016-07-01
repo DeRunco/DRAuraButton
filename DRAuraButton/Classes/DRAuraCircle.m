@@ -138,11 +138,25 @@ NSArray<UIBezierPath *> *smallPath(CGRect frame, CGFloat width, CGFloat offset, 
 	colorSuperview.toValue = (__bridge id _Nullable)(_tmpConfig.buttonColor.CGColor);
 	colorSuperview.fromValue = (__bridge id _Nullable)(_config.buttonColor.CGColor);
 	
+	
+	CABasicAnimation *widthAnimationTop = [CABasicAnimation animationWithKeyPath:@"lineWidth"];
+	widthAnimationTop.duration = _tmpConfig.animationDuration;
+	widthAnimationTop.toValue = @(_tmpConfig.width);
+	widthAnimationTop.fromValue = @(_config.width);
+	
+	CABasicAnimation *widthAnimationBottom = [CABasicAnimation animationWithKeyPath:@"lineWidth"];
+	widthAnimationBottom.duration = _tmpConfig.animationDuration;
+	widthAnimationBottom.toValue = @(_tmpConfig.width);
+	widthAnimationBottom.fromValue = @(_config.width);
+	
 	[_topLayer addAnimation:morphTop forKey:nil];
 	[_bottomLayer addAnimation:morphBottom forKey:nil];
 	
 	[_topLayer addAnimation:colorTop forKey:nil];
 	[_bottomLayer addAnimation:colorBottom forKey:nil];
+	
+	[_topLayer addAnimation:widthAnimationTop forKey:nil];
+	[_bottomLayer addAnimation:widthAnimationBottom forKey:nil];
 	
 	[self.superview.layer addAnimation:colorSuperview forKey:nil];
 	
