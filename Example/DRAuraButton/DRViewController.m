@@ -47,6 +47,10 @@ NSString *stateForStep(NSInteger step)
 				break;
 		}
 		[self.button setCurrentStateID:stateForStep(self.currentStep)];
+		if (sender) {
+			[_pulseTimer invalidate];
+			[self initTimer];
+		}
 	});
 }
 
@@ -80,9 +84,13 @@ NSString *stateForStep(NSInteger step)
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-	_pulseTimer = [NSTimer scheduledTimerWithTimeInterval:5.1 target:self selector:@selector(changeMode:) userInfo:nil repeats:YES];
+	[self initTimer];
 }
 
+- (void)initTimer
+{
+	_pulseTimer = [NSTimer scheduledTimerWithTimeInterval:5.1 target:self selector:@selector(changeMode:) userInfo:nil repeats:YES];
+}
 
 - (void)changeMode:(NSTimer *)t
 {
