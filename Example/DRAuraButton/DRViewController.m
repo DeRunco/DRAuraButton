@@ -10,6 +10,7 @@
 
 @interface DRViewController ()
 @property (nonatomic) NSInteger currentStep;
+@property (nonatomic) NSTimer *pulseTimer;
 @end
 
 NSString *stateForStep(NSInteger step)
@@ -56,9 +57,9 @@ NSString *stateForStep(NSInteger step)
 		c.ID = stateForStep(0);
 		c.width = 2.;
 		c.space = 7.;
-		c.offset = 6.;
+		c.offset = 4.;
 		c.step = 0.04;
-		c.animationDuration = 0.0;
+		c.animationDuration = 0.3;
 		c.auraColor = [UIColor blackColor];
 		c.buttonColor = [UIColor grayColor];
 	}];
@@ -66,13 +67,27 @@ NSString *stateForStep(NSInteger step)
 		c.ID = stateForStep(1);
 		c.width = 25.;
 		c.space = 30.5;
-		c.offset = 6.;
-		c.step = 0.15;
-		c.animationDuration = 2.5;
+		c.offset = 16.;
+		c.step = 0.07;
+		c.animationDuration = 0.3;
 		c.auraColor = [UIColor redColor];
 		c.buttonColor = [UIColor orangeColor];
 	}];
 	[button setCurrentStateID:stateForStep(0)];
 }
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	_pulseTimer = [NSTimer scheduledTimerWithTimeInterval:5.1 target:self selector:@selector(changeMode:) userInfo:nil repeats:YES];
+}
+
+
+- (void)changeMode:(NSTimer *)t
+{
+	[self step:nil];	
+}
+
 
 @end

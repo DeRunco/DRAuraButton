@@ -24,7 +24,7 @@ pod "DRAuraButton"
 ## About
 ![Animated transition from a configuration to another](./output.gif "Animated Transitions!")
 
-DRAuraButton is a UIButton with a subview that displays a rotating circle. Multiple configuration of stroke width, radius, color and speed can be specified. Going from one configuration to another is transitionned.
+DRAuraButton is a UIButton with a subview that displays a rotating circle. Multiple configuration of stroke width, radius, color and speed can be specified. Going from one configuration to another is animated.
 
 This project was done mainly as a first approch to Core Animation framework -- it uses `CABasicAnimation`s to animates transition between states.
 
