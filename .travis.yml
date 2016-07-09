@@ -1,5 +1,5 @@
+rvm: 2.2.5
 before_install:
-  - rvm: 2.2.5
   - gem install cocoapods -v '1.0.1'
 language: objective-c
 podfile: Example/Podfile
