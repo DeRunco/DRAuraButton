@@ -2,6 +2,16 @@ before_install:
   - gem install cocoapods -v '1.0.1'
 language: objective-c
 osx_image: xcode7.3
-podfile: Example/Podfile
-xcode_workspace: Example/DRAuraButton.xcworkspace
-xcode_scheme: DRAuraButton
+
+script:
+  xctool
+  -workspace Example/DRAuraButton.xcworkspace
+  -scheme DRAuraButton
+  -sdk iphonesimulator
+  -destination 'platform=iOS Simulator,name=iPhone 6 Plus'
+  build 
+  test
+  ONLY_ACTIVE_ARCH=NO
+  CODE_SIGN_IDENTITY=""
+  CODE_SIGNING_REQUIRED=NO
+
