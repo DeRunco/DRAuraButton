@@ -1,6 +1,0 @@
-before_install:
-  - gem install cocoapods -v '1.0.1'
-language: objective-c
-podfile: Example/Podfile
-xcode_workspace: Example/DRAuraButton.xcworkspace
-xcode_scheme: DRAuraButton
